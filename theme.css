@@ -1,0 +1,174 @@
+/* Aligned Chat Box and Typing indicator */
+.container_c48ade {
+  --custom-chat-input-margin-bottom: 22px;
+}
+:root {
+  --custom-channel-textarea-text-area-height: 42px;
+}
+.visual-refresh .base_b88801 {
+  font-size: 13.5px;
+  height: 22px;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* profile bar over servers fix*/
+.visual-refresh {
+
+.panels_c48ade {
+    left: 84px;
+    width: calc(100% - 86px);
+    .actionButtons_e131a9 button {
+    padding: 0;
+  }
+}
+.wrapper_ef3116{
+        margin-bottom: 0px;
+}
+} 
+/*spotify fix*/
+.theme-dark #vc-spotify-player{
+    background: 0;
+}
+
+/*chat and member list fixes*/
+.visual-refresh {
+.scrollerInner__36d07 {
+    padding-bottom: 5px;
+}
+.membersWrap_c8ffbb .membersGroup_c8ffbb {
+    padding-bottom: 25px;
+}
+.button__74017,.buttonContents_e6e74f:not([class*="enabled__67645"]) {
+    transform: scale(1.25) !important;
+}
+
+ .spriteContainer__04eed {
+   transform: scale(1.1) !important;
+}
+.buttonWrapper__24af7{
+    svg {
+        --icon-size: 19px;
+        height: var(--icon-size);
+        width: var(--icon-size);
+    }
+}
+.button__201d5.lookBlank__201d5.colorBrand__201d5.grow__201d5[aria-label="Send a gift"]
+{
+display: none;
+}
+.button__201d5.lookBlank__201d5.colorBrand__201d5.grow__201d5[aria-label="Apps"]
+{
+display: none;
+}
+.button__201d5.lookBlank__201d5.colorBrand__201d5.grow__201d5[aria-label="Open sticker picker"]
+{
+display: none;
+}
+.buttons__74017 {
+    gap: 4px;
+}
+}
+/* server list fix*/
+/* thank you @scattagain on discord */
+:root {
+    --guildbar-avatar-size: 48px !important;
+}
+
+.visual-refresh nav[class*="guilds_"] {
+    [class*="listItem__"] {
+        defs > path {
+            d: path("M 0 0 H 200 V 200 H 0 Z");
+        }
+
+        [class*="childWrapper__"],
+        [class*="childWrapper__"] img,
+        [class*="icon_"],
+        [class*="circleIconButton__"] {
+            border-radius: 100% !important;
+            transition: border-radius 150ms;
+        }
+
+        [class*="selected__"] {
+            [class*="childWrapper__"],
+            [class*="childWrapper__"] img,
+            [class*="icon_"],
+            [class*="circleIconButton__"] {
+                border-radius: 20px !important;
+            }
+        }
+
+        svg {
+            top: 0px;
+            left: 0px;
+
+            foreignObject {
+                width: var(--guildbar-avatar-size);
+                height: var(--guildbar-avatar-size);
+                transform: translate(-4px, -4px);
+            }
+
+            &:not([class*="folderIcon__"]) > mask {
+                use[href$="-lower_badge_masks"] {
+                    transform: translate(8px, 8px);
+                }
+                use[href$="-upper_badge_masks"] {
+                    transform: translate(8px, 0px);
+                }
+            }
+        }
+
+        [class*=expandedFolderIconWrapper__] svg {
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+    [class*="stack_"] {
+        & > div:not([class]):has([class*="listItem__"]) {
+            height: 48px !important;
+        }
+
+        [class*="isExpanded__"] & {
+            height: auto !important;
+        }
+    }
+}
+
+/* top bar fix*/
+.visual-refresh {
+    --vr-header-snippet-space: 180px;
+    --win-button-size: 30px;
+    --top-bar-size: 15px;
+
+    /* drag area fix*/
+    div.bar_c38106{
+        min-height: var(--top-bar-size);
+    }
+    /*hide title*/ 
+    .title__85643{
+        display: none;
+    }
+    /**hide questionmark/inbox*/
+    .anchor_edefb8
+    {
+        display: none;
+    }
+    div.button__85643
+    {
+        display: none;
+    }
+    /* set  size  of win buttons*/
+    .winButton_c38106{
+        height: var(--win-button-size);
+        width: var(--win-button-size);
+    }
+    /*set bar size*/
+    div.base_c48ade {
+        grid-template-rows: [top] 0 [titleBarEnd] var(--top-bar-size) [noticeEnd] 1fr [end];
+    }
+    /*offset serverlist*/
+    ul[data-list-id="guildsnav"] > div.itemsContainer_ef3116 > div.stack_dbd263 {
+        margin-top: var(--top-bar-size);
+    }
+}
