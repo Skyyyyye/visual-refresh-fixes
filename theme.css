@@ -150,7 +150,7 @@ display: none;
         display: none;
     }
     /**hide questionmark/inbox*/
-    .anchor_edefb8:not([class*=embedLink__623de])
+    .anchor_edefb8:not([class*=embedLink__623de]):not([class*=anchorUnderlineOnHover_edefb8])
     {
         display: none;
     }
