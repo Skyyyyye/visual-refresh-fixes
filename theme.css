@@ -1,16 +1,22 @@
-/* Aligned Chat Box and Typing indicator */
-.container_c48ade {
-  --custom-chat-input-margin-bottom: 22px;
-}
+
+
+/* https://discord.com/channels/1015060230222131221/1028106818368589824/1367258119935099021*/
+@import url("https://raw.githubusercontent.com/sadan4/discordStyles/refs/heads/main/src/qol/folderScrollBar.css");
+
+/*https://discord.com/channels/1015060230222131221/1028106818368589824/1354502862390038528*/
+@import url("https://scattagain.github.io/VencordStuff/css/GuildbarRevert.css");
+
 :root {
-  --custom-channel-textarea-text-area-height: 42px;
+    /* Only include this part if you wish to change these variables */
+    /* You can change the size but only to be less than 48px, you must change the blob scale too */
+    --guildbar-avatar-size: 48px;
+    --blob-scale: 48;
+
+    --guildbar-folder-size: var(--guildbar-avatar-size);
+    --folder-blob-scale: var(--blob-scale);
+    --badges-background: var(--redesign-button-overlay-alpha-background); /*adds a semi transparent background behind badges*/
 }
-.visual-refresh .base_b88801 {
-  font-size: 13.5px;
-  height: 22px;
-  display: flex !important;
-  align-items: center !important;
-}
+
 
 /* profile bar over servers fix*/
 .visual-refresh {
@@ -26,10 +32,6 @@
         margin-bottom: 0px;
 }
 } 
-/*spotify fix*/
-.theme-dark #vc-spotify-player{
-    background: 0;
-}
 
 /*chat and member list fixes*/
 .visual-refresh {
@@ -46,93 +48,20 @@
  .spriteContainer__04eed {
    transform: scale(1.1) !important;
 }
-.buttonWrapper__24af7{
-    svg {
-        --icon-size: 19px;
-        height: var(--icon-size);
-        width: var(--icon-size);
-    }
+/*remove gift*/
+.container_c0c49a
+{
+  display: none;
 }
-.button__201d5.lookBlank__201d5.colorBrand__201d5.grow__201d5[aria-label="Send a gift"]
+/*remove game*/
+.channelAppLauncher_e6e74f
 {
 display: none;
 }
-.button__201d5.lookBlank__201d5.colorBrand__201d5.grow__201d5[aria-label="Apps"]
-{
-display: none;
-}
-.button__201d5.lookBlank__201d5.colorBrand__201d5.grow__201d5[aria-label="Open sticker picker"]
-{
-display: none;
-}
+/*decrease gap between buttons*/
 .buttons__74017 {
     gap: 4px;
 }
-}
-/* server list fix*/
-/* thank you @scattagain on discord */
-:root {
-    --guildbar-avatar-size: 48px !important;
-}
-
-.visual-refresh nav[class*="guilds_"] {
-    [class*="listItem__"] {
-        defs > path {
-            d: path("M 0 0 H 200 V 200 H 0 Z");
-        }
-
-        [class*="childWrapper__"],
-        [class*="childWrapper__"] img,
-        [class*="icon_"],
-        [class*="circleIconButton__"] {
-            border-radius: 100% !important;
-            transition: border-radius 150ms;
-        }
-
-        [class*="selected__"] {
-            [class*="childWrapper__"],
-            [class*="childWrapper__"] img,
-            [class*="icon_"],
-            [class*="circleIconButton__"] {
-                border-radius: 20px !important;
-            }
-        }
-
-        svg {
-            top: 0px;
-            left: 0px;
-
-            foreignObject {
-                width: var(--guildbar-avatar-size);
-                height: var(--guildbar-avatar-size);
-                transform: translate(-4px, -4px);
-            }
-
-            &:not([class*="folderIcon__"]) > mask {
-                use[href$="-lower_badge_masks"] {
-                    transform: translate(8px, 8px);
-                }
-                use[href$="-upper_badge_masks"] {
-                    transform: translate(8px, 0px);
-                }
-            }
-        }
-
-        [class*=expandedFolderIconWrapper__] svg {
-            width: 24px;
-            height: 24px;
-        }
-    }
-
-    [class*="stack_"] {
-        & > div:not([class]):has([class*="listItem__"]) {
-            height: 48px !important;
-        }
-
-        [class*="isExpanded__"] & {
-            height: auto !important;
-        }
-    }
 }
 
 /* top bar fix*/
@@ -149,11 +78,7 @@ display: none;
     .title__85643{
         display: none;
     }
-    /**hide questionmark/inbox*/
-    .anchor_edefb8:not([class*=embedLink__623de]):not([class*=anchorUnderlineOnHover_edefb8])
-    {
-        display: none;
-    }
+    /*remove help button*/
     div.button__85643
     {
         display: none;
@@ -172,3 +97,99 @@ display: none;
         margin-top: var(--top-bar-size);
     }
 }
+
+/* https://discord.com/channels/1015060230222131221/1028106818368589824/1367926149497225287 */
+#vc-spotify-player {
+    --blur-amount: 4px; 
+    --normal-bg-colour: var(--bg-overlay-floating, var(--background-base-low, var(--background-secondary-alt)));
+
+    position: relative;
+    background: linear-gradient(to bottom, transparent 0%, var(--normal-bg-colour) 100%) !important;
+    overflow: hidden;
+    transition: all 0.4s ease-out;
+    > * {
+      filter: drop-shadow(0 0 10px var(--normal-bg-colour));
+    }
+}
+#vc-spotify-player:hover {
+    --blur-amount: 0px;
+}
+#vc-spotify-player::before,
+#vc-spotify-player::after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    transition: all 0.4s ease-out;
+}
+#vc-spotify-player::before {
+    background: var(--vc-spotify-track-image);
+    background-position: center top; 
+    background-size: cover; 
+    opacity: 0.5;
+}
+#vc-spotify-player:hover::before {
+    opacity: 0.7;
+}
+#vc-spotify-player::after {
+    backdrop-filter: blur(var(--blur-amount));
+}
+#vc-spotify-progress-bar > [class^="slider_"] > [class^="bar_"] > [class^="barFill_"] {
+    background-color: white !important;
+    background: var(--vc-spotify-track-image);
+    background-size: 1px 100%;
+}
+#vc-spotify-progress-bar > [class^="slider_"] > [class^="bar_"] > [class^="barFill_"]::before {
+    content: "";
+    position: fixed;
+    height: inherit;
+    width: inherit;
+    top: inherit;
+    left: inherit;
+    border-radius: 4px 0 0 4px;
+    backdrop-filter: blur(10px) saturate(4) brightness(1.6);
+}
+
+/*https://discord.com/channels/1015060230222131221/1028106818368589824/1352215311369375845*/
+.content_a2f514 {
+    display: flex;
+    flex-direction: column;
+    > .spinner_a2f514 { display: none }
+    &:before {
+        display: block;
+        height: 128px;
+        position: relative;
+        content: url("https://cdn.discordapp.com/emojis/1373120209459740692.webp?size=96&animated=true");
+        image-rendering: pixelated;
+         align-content: center;
+         scale: 3.125;
+         margin-bottom: 96px;
+    }
+}
+
+/*https://discord.com/channels/1015060230222131221/1028106818368589824/1420603427246833775*/
+/* Sidebar cat */
+.user-profile-sidebar::after {
+    /* DIscord's color setup */
+    --profile-gradient-start:  color-mix(in oklab, var(--profile-gradient-overlay-color) 100%, var(--profile-gradient-primary-color));
+    --profile-gradient-end:  color-mix(in oklab, var(--profile-gradient-overlay-color) 100%, var(--profile-gradient-secondary-color));
+	/* The creatures 2 */
+    content:
+    "      へ              ╱|、\a"
+            "૮ >  < )   ♡    (˚ˎ 。7\a"
+            " /        づ          |、 ˜〵\a"
+            "乀(ˍ, ل ل              じしˍ, )ノ";
+
+    white-space: pre;
+    inset: 0;
+    padding: 20px;
+    color: white;
+    /* Also discords */
+    background: linear-gradient(var(--profile-gradient-start), var(--profile-gradient-start) var(--custom-user-profile-banner-height), var(--profile-gradient-end));
+    text-align: center;
+    font-size: 150%;
+}
+/* End sidebar cat */
