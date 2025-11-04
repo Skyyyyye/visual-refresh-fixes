@@ -78,6 +78,7 @@
     --vr-header-snippet-space: 180px;
     --win-button-size: 30px;
     --top-bar-size: 15px;
+    --custom-inbox-multiplier: 1.2;
 
     /* drag area fix*/
     [class*="bar_"][class*="theme-dark"]
@@ -96,6 +97,25 @@
     {
         display: none;
     }
+
+    /*inbox button scaling*/
+    [class*="clickable_"][aria-label="Inbox"]
+    {
+ 
+        svg {
+            width: calc(var(--top-bar-size) * var(--custom-inbox-multiplier)) !important;
+            height: calc(var(--top-bar-size) * var(--custom-inbox-multiplier)) !important;
+        }
+        [class*="badge_"]
+        {
+            width: calc(var(--top-bar-size) / 3);
+            height: calc(var(--top-bar-size) / 3);
+        }
+
+        padding-top: 5px;
+        height: calc(var(--top-bar-size) * var(--custom-inbox-multiplier));
+    }
+
     /* set  size  of win buttons*/
     [class^="winButtons_"]
     {
