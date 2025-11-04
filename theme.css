@@ -1,5 +1,3 @@
-
-
 /* https://discord.com/channels/1015060230222131221/1028106818368589824/1367258119935099021*/
 @import url("https://raw.githubusercontent.com/sadan4/discordStyles/refs/heads/main/src/qol/folderScrollBar.css");
 
@@ -15,51 +13,62 @@
     --guildbar-folder-size: var(--guildbar-avatar-size);
     --folder-blob-scale: var(--blob-scale);
     --badges-background: var(--redesign-button-overlay-alpha-background); /*adds a semi transparent background behind badges*/
+
+    --custom-guild-list-padding: 12px;
+    --custom-guild-list-width: calc(max(var(--guildbar-avatar-size), var(--guildbar-folder-size)) + var(--custom-guild-list-padding) * 2);
+
+    --user-area-padding: 4px
 }
 
 
 /* profile bar over servers fix*/
 .visual-refresh {
 
-.panels_c48ade {
-    left: 84px;
-    width: calc(100% - 86px);
-    .actionButtons_e131a9 button {
-    padding: 0;
-  }
+[class*="panels_"][aria-label="User area"]
+{       
+    left: calc(var(--custom-guild-list-width) + var(--user-area-padding));
+    width: calc(100% - (var(--custom-guild-list-width) + var(--user-area-padding) * 2));
+
+    /*less space in between panel buttons*/
+    [class*="buttons"] 
+    {
+        gap: 1px;
+    }
 }
-.wrapper_ef3116{
-        margin-bottom: 0px;
+[class*="wrapper_"][aria-label="Servers sidebar"]
+{
+    margin-bottom: 0px;
 }
-} 
+}
+
 
 /*chat and member list fixes*/
 .visual-refresh {
-.scrollerInner__36d07 {
+
+/*little more spaced out member list*/
+[class*="membersWrap_"] > [class*="members"] > [class*="membersGroup_"]
+{
     padding-bottom: 5px;
-}
-.membersWrap_c8ffbb .membersGroup_c8ffbb {
-    padding-bottom: 5px;
-}
-.button__74017,.buttonContents_e6e74f:not([class*="enabled__67645"]) {
-    transform: scale(1.25) !important;
 }
 
- .spriteContainer__04eed {
+[class*="button_"][aria-label="Send a gift"]
+{
+    display: none;
+}
+[class*="channelAppLauncher_"]
+{
+    display: none;  
+}
+[class*="buttons_"] > [class*="buttonContainer"] > [class*="button_"]
+{
+    transform: scale(1.25) !important;
+}
+[class*="spriteContainer_"]
+{
    transform: scale(1.1) !important;
 }
-/*remove gift*/
-.container_c0c49a
+[class*="channelTextArea_"] > [class*="scrollableContainer_"] > [class*="inner_"] > [class*="buttons_"]
 {
-  display: none;
-}
-/*remove game*/
-.channelAppLauncher_e6e74f
-{
-display: none;
-}
-/*decrease gap between buttons*/
-.buttons__74017 {
     gap: 4px;
 }
 }
@@ -71,29 +80,35 @@ display: none;
     --top-bar-size: 15px;
 
     /* drag area fix*/
-    div.bar_c38106{
+    [class*="bar_"][class*="theme-dark"]
+    {
         min-height: var(--top-bar-size);
+
+        /*hide title*/ 
+        [class^="title_"]
+        {
+            display: none;
+        }
     }
-    /*hide title*/ 
-    .title__85643{
-        display: none;
-    }
+
     /*remove help button*/
-    div.button__85643
+    [class*="button_"][aria-label="Help"]
     {
         display: none;
     }
     /* set  size  of win buttons*/
-    .winButton_c38106{
+    [class^="winButtons_"]
+    {
         height: var(--win-button-size);
         width: var(--win-button-size);
     }
     /*set bar size*/
-    div.base_c48ade {
+    [class^="base_"][data-fullscreen$="false"]
+    {
         grid-template-rows: [top] 0 [titleBarEnd] var(--top-bar-size) [noticeEnd] 1fr [end];
     }
     /*offset serverlist*/
-    ul[data-list-id="guildsnav"] > div.itemsContainer_ef3116 > div.stack_dbd263 {
+    ul[data-list-id="guildsnav"] > [class^="itemsContainer_"] > [class^="stack"] {
         margin-top: var(--top-bar-size);
     }
 }
