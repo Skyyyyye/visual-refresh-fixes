@@ -55,7 +55,7 @@
 {
     display: none;
 }
-[class*="channelAppLauncher_"]
+[class*="app-launcher"]
 {
     display: none;  
 }
