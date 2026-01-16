@@ -1,6 +1,3 @@
-/* https://discord.com/channels/1015060230222131221/1028106818368589824/1367258119935099021*/
-@import url("https://raw.githubusercontent.com/sadan4/discordStyles/refs/heads/main/src/qol/folderScrollBar.css");
-
 /*https://discord.com/channels/1015060230222131221/1028106818368589824/1354502862390038528*/
 @import url("https://scattagain.github.io/VencordStuff/css/GuildbarRevert.css");
 
@@ -24,112 +21,58 @@
 /* profile bar over servers fix*/
 .visual-refresh {
 
-[class*="panels_"][aria-label="User area"]
-{       
-    left: calc(var(--custom-guild-list-width) + var(--user-area-padding));
-    width: calc(100% - (var(--custom-guild-list-width) + var(--user-area-padding) * 2));
+    [class*="panels"][aria-label="User area"]
+    {       
+       left: calc(var(--custom-guild-list-width) + var(--user-area-padding));
+       width: calc(100% - (var(--custom-guild-list-width) + var(--user-area-padding) * 2));
 
-    /*less space in between panel buttons*/
-    [class*="buttons"] 
-    {
-        gap: 1px;
+       /*less space in between panel buttons*/
+       [class*="-buttons"] 
+        {
+            gap: 1px;
+        }
+    }
+    [aria-label="Servers sidebar"]
+    {   
+        margin-bottom: 0px;
     }
 }
-[class*="wrapper_"][aria-label="Servers sidebar"]
-{
-    margin-bottom: 0px;
-}
-}
 
 
-/*chat and member list fixes*/
+/*chat fixes*/
 .visual-refresh {
-
-/*little more spaced out member list*/
-[class*="membersWrap_"] > [class*="members"] > [class*="membersGroup_"]
-{
-    padding-bottom: 5px;
-}
-
-[class*="button_"][aria-label="Send a gift"]
-{
-    display: none;
-}
-[class*="app-launcher"]
-{
-    display: none;  
-}
-[class*="buttons_"] > [class*="buttonContainer"] > [class*="button_"]
-{
-    transform: scale(1.25) !important;
-}
-[class*="spriteContainer_"]
-{
-   transform: scale(1.1) !important;
-}
-[class*="channelTextArea_"] > [class*="scrollableContainer_"] > [class*="inner_"] > [class*="buttons_"]
-{
-    gap: 4px;
-}
+    /*hide these buttons*/
+    [class*="button"][aria-label="Send a gift"]
+    {
+        display: none;
+    }
+    [class*="button"][class*="app-launcher"]
+    {
+        display: none;  
+    }
+    /*message buttons enlarge*/
+    [class*="button"] > [class*="buttonWrapper"]
+    {
+        transform: scale(1.25) !important;
+    }
+    [class*="button"] > [class*="spriteContainer"]
+    {
+        transform: scale(1.25) !important;
+    }
+    /*make the space between buttons smaller*/
+    [class*="channelTextArea"] > [class*="scrollableContainer"] > [class*="inner"] > [class*="buttons"]
+    {
+        gap: 4px;
+    }
 }
 
 /* top bar fix*/
 .visual-refresh {
-    --vr-header-snippet-space: 180px;
-    --win-button-size: 30px;
-    --top-bar-size: 15px;
-    --custom-inbox-multiplier: 1.2;
-
-    /* drag area fix*/
-    [class*="bar_"][class*="theme-dark"]
-    {
-        min-height: var(--top-bar-size);
-
-        /*hide title*/ 
-        [class^="title_"]
-        {
-            display: none;
-        }
-    }
 
     /*remove help button*/
-    [class*="button_"][aria-label="Help"]
+    [class*="anchor"]:has([class*="button"][aria-label="Help"])
     {
         display: none;
-    }
-
-    /*inbox button scaling*/
-    [class*="clickable_"][aria-label="Inbox"]
-    {
- 
-        svg {
-            width: calc(var(--top-bar-size) * var(--custom-inbox-multiplier)) !important;
-            height: calc(var(--top-bar-size) * var(--custom-inbox-multiplier)) !important;
-        }
-        [class*="badge_"]
-        {
-            width: calc(var(--top-bar-size) / 3);
-            height: calc(var(--top-bar-size) / 3);
-        }
-
-        padding-top: 5px;
-        height: calc(var(--top-bar-size) * var(--custom-inbox-multiplier));
-    }
-
-    /* set  size  of win buttons*/
-    [class^="winButtons_"]
-    {
-        height: var(--win-button-size);
-        width: var(--win-button-size);
-    }
-    /*set bar size*/
-    [class^="base_"][data-fullscreen$="false"]
-    {
-        grid-template-rows: [top] 0 [titleBarEnd] var(--top-bar-size) [noticeEnd] 1fr [end];
-    }
-    /*offset serverlist*/
-    ul[data-list-id="guildsnav"] > [class^="itemsContainer_"] > [class^="stack"] {
-        margin-top: var(--top-bar-size);
     }
 }
 
@@ -172,32 +115,19 @@
 #vc-spotify-player::after {
     backdrop-filter: blur(var(--blur-amount));
 }
-#vc-spotify-progress-bar > [class^="slider_"] > [class^="bar_"] > [class^="barFill_"] {
-    background-color: white !important;
-    background: var(--vc-spotify-track-image);
-    background-size: 1px 100%;
-}
-#vc-spotify-progress-bar > [class^="slider_"] > [class^="bar_"] > [class^="barFill_"]::before {
-    content: "";
-    position: fixed;
-    height: inherit;
-    width: inherit;
-    top: inherit;
-    left: inherit;
-    border-radius: 4px 0 0 4px;
-    backdrop-filter: blur(10px) saturate(4) brightness(1.6);
-}
+
 
 /*https://discord.com/channels/1015060230222131221/1028106818368589824/1352215311369375845*/
-.content_a2f514 {
+/*loading animation*/
+.a2f5142ba8328dfd-content {
     display: flex;
     flex-direction: column;
-    > .spinner_a2f514 { display: none }
+> .a2f5142ba8328dfd-spinner { display: none }
     &:before {
         display: block;
         height: 128px;
         position: relative;
-        content: url("https://cdn.discordapp.com/emojis/1373120209459740692.webp?size=96&animated=true");
+        content: url(https://cdn.discordapp.com/emojis/1373120209459740692.webp?size=96&animated=true);
         image-rendering: pixelated;
          align-content: center;
          scale: 3.125;
